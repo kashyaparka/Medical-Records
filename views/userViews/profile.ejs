@@ -13,20 +13,20 @@
 <body>
 	<%- include('../partials/navbar'); %>
 
-    <div id="myModal" class="modal" >
-        <div class="modal-content">
+    <div id="myModal" class="modal fadeIn">
+        <div class="modal-content" >
 			<div class="row">
 	           <div class="content-top ">
 				<a href="#" class="img-rounded"><img src="../img/ProfilePic.png" id="profileImg1"></a>
+				<span><button  type="button" class="cancel fadeOut" data-dismiss="modal">CANCEL</button></span>
 				<h4>NEW DISEASE</h4>
-				 
 		        </div>
 			</div>
 			<form class="form-modal" method="POST" enctype="multipart/form-data" ><!--Dont remove the enctype-->
-				<!--<div class="group1">
-				  <input type="text" name="name"><span class="highlight1"></span><span class="bar1"></span>
+				<div class="group1">
+				  <input type="text" name="name"aria-required="true" required><span class="highlight1"></span><span class="bar1" ></span>
 				  <label for="name" style="margin-left: 8px; margin-top: -20px; padding-bottom: 200px;">Disease Name</label>
-				  <span><button class="save1" formaction="profile/upload" value="upload">SAVE</button></span><!-- Dont remove the name and value attribute-->
+				  <span><button class="save1" formaction="profile/upload" value="upload" >SAVE</button></span><!-- Dont remove the name and value attribute-->
 				  </div>
 				<div class="group2" style=" margin-bottom: -51px; margin-top: 15px;">
 					<!--<input type="text"><span class="highlight1"></span><span class="bar1"></span>-->
@@ -36,7 +36,7 @@
 						<label class="custom-file-label" for="customFile">Choose file</label>-->
 						<input id="input-b3" name="input-b3[]" type="file" class="file" multiple 
 						data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-						</div>
+					</div>
 				</div>
 			<span class="UD">Upload Documents</span>
 			<div class="zone">
@@ -74,7 +74,7 @@
 								<% for(var d of user.disease) { %>
 									<a class="dropdown-item"><span class="dropAnchor"><%= d.name %></span></a>
 								<% } %>
-								<a id="myBtn">Add New</a>
+								<a id="myBtn" data-toggle="modal" data-target="#myModal" onclick="hideFunction()" >Add New</a>
 							</div>
 					</div>
 					<div class="lists">
@@ -165,7 +165,7 @@
 									<% for(var d of user.disease) { %>
 										<a class="dropdown-item"><span class="dropAnchor"><%= d.name %></span></a>
 									<% } %>
-									<a id="myBtn">Add New</a>
+									<a id="myBtn" data-toggle="modal" data-target="#myModal">Add New</a>
 								</div>
 						</div>
 						<div class="lists">
@@ -256,6 +256,7 @@
         function myFunction() {
           document.getElementById("myDropdown").classList.toggle("show");
         }
+		
         
         // Close the dropdown menu if the user clicks outside of it
         window.onclick = function(event) {
@@ -270,6 +271,7 @@
             }
           }
         } 
+	
         
 		</script>
 		<script>
@@ -293,11 +295,11 @@
 			
 			</script>
         <script>
-            var modal = document.getElementById("myModal");
-// Get the button that opens the modal
+var modal = document.getElementById("myModal");
+//Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close1")[0];
+ //Get the <span> element that closes the modal
+var span = document.getElementsByClassName("cancel")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";

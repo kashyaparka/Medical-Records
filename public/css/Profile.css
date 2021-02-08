@@ -563,7 +563,7 @@ text-decoration:none;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-
+.hide {display:none;}
 /*.content-top {
 	background-color: rgb(247, 247, 247) !important;
 	height:5rem;
